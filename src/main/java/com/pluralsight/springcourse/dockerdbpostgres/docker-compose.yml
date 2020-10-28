@@ -1,0 +1,17 @@
+# docker-compose.yml
+version: '3'
+services:
+  postgres_pruebas_database: # Cambiar nombre para cada proyecto
+    container_name: postgres_pruebas_database
+    image: "postgres"
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: pruebas_database
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data # persist data incluso si se apaga
+    ports:
+      - "32781:5432"
+    restart: unless-stopped
+volumes:
+  database-data:
